@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestj
 import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 
 @Controller('users')
@@ -31,7 +32,7 @@ export class UsersController {
     }
 
     @Patch('/:id')
-    patc(@Param('id') userId: number, @Body() updateData) {
+    patc(@Param('id') userId: number, @Body() updateData: UpdateUserDto) {
        return this.usersService.update(userId, updateData);
     }
 

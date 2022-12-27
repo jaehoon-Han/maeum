@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -33,7 +34,7 @@ export class UsersService {
 
     }
 
-    update(id: number, updateData) {
+    update(id: number, updateData: UpdateUserDto) {
         const user = this.getOne(id);
         this.deleteOne(id);
         this.users.push({ ...user, ...updateData });
