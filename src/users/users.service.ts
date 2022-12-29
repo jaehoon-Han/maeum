@@ -7,12 +7,12 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersService {
     private users: User[] = [];
 
-    getAll(): User[] {
+    getAllUser(): User[] {
         return this.users;
         // 진짜 데이터베이스면 return에 Query가 와야한다.
     }
 
-    getOne(id: number): User {
+    getOneUser(id: number): User {
         const user = this.users.find(user => user.id === id);
         if (!user) {
             throw new NotFoundException(`User with ID ${id} not found.`);
@@ -20,12 +20,12 @@ export class UsersService {
         return user;
     }
 
-    deleteOne(id: number) {
-        this.getOne(id);
+    deleteOneUser(id: number) {
+        this.getOneUser(id);
         this.users = this.users.filter(user => user.id !== id);
     }
 
-    create(userData: CreateUserDto) {
+    createUser(userData: CreateUserDto) {
         this.users.push({
             id: this.users.length + 1,
             ...userData,
@@ -35,8 +35,8 @@ export class UsersService {
     }
 
     update(id: number, updateData: UpdateUserDto) {
-        const user = this.getOne(id);
-        this.deleteOne(id);
+        const user = this.getOneUser(id);
+        this.deleteOneUser(id);
         this.users.push({ ...user, ...updateData });
     }
 }

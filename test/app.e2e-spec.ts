@@ -43,7 +43,6 @@ describe('AppController (e2e)', () => {
           age: 11,
           gender: "female",
           password: "test",
-          medicalHistory: ["test", "test"]
         })
         .expect(201);
     });
@@ -56,7 +55,6 @@ describe('AppController (e2e)', () => {
         age: 11,
         gender: "female",
         password: "test",
-        medicalHistory: ["test", "test"],
         other: "thing"
       })
       .expect(400);

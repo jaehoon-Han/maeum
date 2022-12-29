@@ -13,8 +13,5 @@ export class CreateUserDto {
 
     @IsNumber()
     readonly age: number;
-    
-    @IsOptional()
-    @IsString({ each: true })
-    readonly medicalHistory: string[];
+
 }

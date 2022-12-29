@@ -4,5 +4,4 @@ export class User {
     age:number;
     gender:string;
     password:string;
-    medicalHistory:string[];
 }

@@ -11,12 +11,11 @@ describe('UsersService', () => {
     }).compile();
 
     service = module.get<UsersService>(UsersService);
-     service.create({
+     service.createUser({
         name: '재훈이',
         gender: '남자',
         age: 29,
         password: 'wkdk',
-        medicalHistory: ['두통', '치통']
       });
   });
 
@@ -25,10 +24,10 @@ describe('UsersService', () => {
     expect(service).toBeDefined();
   });
 
-  describe("getAll", () => {
+  describe("getUserAll", () => {
     it("should return an array", () => {
 
-      const result = service.getAll();
+      const result = service.getAllUser();
 
       expect(result).toBeInstanceOf(Array);
     });
@@ -36,20 +35,19 @@ describe('UsersService', () => {
 
   describe("getOne", () => {
     it("should return a user", () => {
-      service.create({
+      service.createUser({
         name: '재훈이',
         gender: '남자',
         age: 29,
         password: 'wkdk',
-        medicalHistory: ['두통', '치통']
       });
-      const user = service.getOne(1);
+      const user = service.getOneUser(1);
       expect(user).toBeDefined();
     });
 
     it("should throw 404 error", () => {
       try {
-        service.getOne(999);
+        service.getOneUser(999);
       } catch (e) {
         expect(e).toBeInstanceOf(NotFoundException);
         expect(e.message).toEqual('User with ID 999 not found.');
@@ -61,21 +59,20 @@ describe('UsersService', () => {
   describe("deleteOne", () => {
 
     it("delete a user", () => {
-      service.create({
+      service.createUser({
         name: '재훈이',
         gender: '남자',
         age: 29,
         password: 'wkdk',
-        medicalHistory: ['두통', '치통']
       });
-      const beforeDelete = service.getAll().length;
-      service.deleteOne(1)
-      const afterDelete = service.getAll().length;
+      const beforeDelete = service.getAllUser().length;
+      service.deleteOneUser(1)
+      const afterDelete = service.getAllUser().length;
       expect(afterDelete).toBeLessThan(beforeDelete);
     });
     it("should return a 404", () => {
       try {
-        service.deleteOne(999)
+        service.deleteOneUser(999)
       } catch (e) {
         expect(e).toBeInstanceOf(NotFoundException);
       }
@@ -84,15 +81,14 @@ describe('UsersService', () => {
 
   describe("create", () => {
     it("should create a user", () => {
-      const beforeCreate = service.getAll().length;
-      service.create({
+      const beforeCreate = service.getAllUser().length;
+      service.createUser({
         name: '재훈이',
         gender: '남자',
         age: 29,
         password: 'wkdk',
-        medicalHistory: ['두통', '치통']
       });
-      const afterCreate = service.getAll().length;
+      const afterCreate = service.getAllUser().length;
       console.log(beforeCreate, afterCreate);
       expect(afterCreate).toBeGreaterThan(beforeCreate);
     });
@@ -101,15 +97,14 @@ describe('UsersService', () => {
   describe("update", () => {
 
     it("shuold update a user", () => {
-      service.create({
+      service.createUser({
         name: '재훈이',
         gender: '남자',
         age: 29,
         password: 'wkdk',
-        medicalHistory: ['두통', '치통']
       });
       service.update(1, {name: '한재훈'});
-      const user = service.getOne(1);
+      const user = service.getOneUser(1);
       expect(user.name).toEqual('한재훈');
     });
     it('shoul throw a NotFoundException', () => {

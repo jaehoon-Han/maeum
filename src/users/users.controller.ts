@@ -11,28 +11,28 @@ export class UsersController {
         constructor(private readonly usersService: UsersService){}
 
     @Get()
-    getAll(): User[] {
-        return this.usersService.getAll();
+    getAllUser(): User[] {
+        return this.usersService.getAllUser();
     }
 
     @Get("/:id")
-    getOne(@Param('id') userId: number):User {
+    getOneUser(@Param('id') userId: number):User {
         console.log(typeof userId);
-        return this.usersService.getOne(userId);
+        return this.usersService.getOneUser(userId);
     }
 
     @Post()
-    create(@Body() userData: CreateUserDto) {
-       return this.usersService.create(userData);
+    createUser(@Body() userData: CreateUserDto) {
+       return this.usersService.createUser(userData);
     }
 
     @Delete('/:id')
-    remove(@Param('id') userId: number) {
-        return this.usersService.deleteOne(userId);
+    removeUser(@Param('id') userId: number) {
+        return this.usersService.deleteOneUser(userId);
     }
 
     @Patch('/:id')
-    patc(@Param('id') userId: number, @Body() updateData: UpdateUserDto) {
+    patchUser(@Param('id') userId: number, @Body() updateData: UpdateUserDto) {
        return this.usersService.update(userId, updateData);
     }
 
