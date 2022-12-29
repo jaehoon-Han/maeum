@@ -1,19 +1,16 @@
 import {Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class Posting {
     @PrimaryGeneratedColumn()
     id:number;
 
     @Column()
-    name:string;
+    userName:string;
 
     @Column()
-    age:number;
+    content:string;
 
     @Column()
-    gender:string;
-
-    @Column()
-    password:string;
+    createdAt:number;
 }

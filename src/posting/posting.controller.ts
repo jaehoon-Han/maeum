@@ -1,31 +1,44 @@
-import { Controller, Delete, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { PostingService } from './posting.service';
+import { Posting } from './entities/posting.entity';
+import { UpdatePostingDto } from './dto/update-posting.dto';
+import { CreatePostingDto } from './dto/create-posting.dto';
 
 @Controller('posting')
 export class PostingController {
+    constructor(private readonly postingService: PostingService){}
 
 @Get() // 전체 게시글 불러오기
-getPostingAll(){
-    return 'this will return all posting';
+getAllPosting():Posting[] {
+    return this.postingService.getAllPosting();
 }
 
-@Get() // 나의 게시글 확인하기
-getMyPosting(){
-    return 'this will return my posting';
+@Get("search:userName") // 게시글 검색하기
+searchingPosting(@Param("userName") userName:string){
+    return this.postingService.searchingPosting(userName);
 }
 
-@Get() // 게시글 검색하기
-getSearchingPosting(){
-    return 'this will return specific posts'
+@Get(":id") // 나의 게시글 확인하기 v number가 아니라 string
+getMyPosting(@Param("id") postId:number):Posting{
+    return this.postingService.getOnePosting(postId);
 }
+
 
 @Post() // 게시글 작성하기
-postPosting(){
-    return 'this will return posting'
+createPosting(@Body() postingData: CreatePostingDto){
+    return this.postingService.createPosting(postingData);
 }
 
-@Delete() // 게시글 삭제하기
-deletePosting(){
-    return 'this will delete posting'
+@Delete(":id") // 게시글 삭제하기
+deletePosting(@Param('id') postId:number){
+    return this.postingService.deleteOnePosting(postId);
 }
 
+@Patch(':id')
+patch(@Param('id') postId:number, @Body() updatePostingData: UpdatePostingDto) {
+    return  this.postingService.update(postId, updatePostingData);
+    }
 }
+
+// todo : 댓글 && 대댓글 쿼리는 완성 후에
+
