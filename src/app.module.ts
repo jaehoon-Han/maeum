@@ -10,9 +10,9 @@ import { Posting } from './posting/entities/posting.entity';
   imports: [UsersModule, PostingModule,
     TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'ip-10-7-2-48',
+    host: 'yh.cpos3ccatavx.ap-northeast-2.rds.amazonaws.com',
     port: 4000,
-    username: 'admin',
+    username: 'maeum_user',
     password: 'gkswogns12',
     database: 'maeum2',
     entities: [User,Posting],
