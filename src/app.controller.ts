@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
     @Get()
     home() {
-        return 'Welcome to my Maeum API';
+        return 'Welcome to my Maeum API for Coding Test !';
     }
 }
