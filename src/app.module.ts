@@ -12,7 +12,7 @@ import { Posting } from './posting/entities/posting.entity';
     type: 'mysql',
     host: 'yh.cpos3ccatavx.ap-northeast-2.rds.amazonaws.com',
     port: 4000,
-    username: 'maeum_user',
+    username: 'maeumUser',
     password: 'gkswogns12',
     database: 'maeum2',
     entities: [User,Posting],
