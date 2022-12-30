@@ -10,7 +10,7 @@ import { Posting } from './posting/entities/posting.entity';
   imports: [UsersModule, PostingModule,
     TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'yh.cpos3ccatavx.ap-northeast-2.rds.amazonaws.com',
+    host: 'ip-10-7-2-48',
     port: 4000,
     username: 'admin',
     password: 'gkswogns12',
