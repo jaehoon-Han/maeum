@@ -1,8 +1,8 @@
 {
   "name": "maeum",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "for maeum",
+  "author": "han",
   "private": true,
   "license": "UNLICENSED",
   "engines": {
@@ -80,5 +80,20 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaehoon-Han/maeum.git"
+  },
+  "keywords": [
+    "maeum"
+  ],
+  "bugs": {
+    "url": "https://github.com/jaehoon-Han/maeum/issues"
+  },
+  "homepage": "https://github.com/jaehoon-Han/maeum#readme"
 }
