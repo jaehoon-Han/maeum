@@ -1,14 +1,12 @@
-import { IsString, IsNumber, IsOptional } from 'class-validator';
+import { InputType, ObjectType, PickType } from '@nestjs/graphql';
+import { CoreOutput } from 'src/common/dto/output.dto';
+import { Posting } from '../entities/Posting.entity';
 
-export class CreatePostingDto {
+@InputType()
+export class CreatePostingInput extends PickType(Posting, [
+  'title',
+  'contents',
+]) {}
 
-    @IsString()
-    readonly userName: string;
-
-    @IsString()
-    readonly content: string;
-
-    @IsNumber()
-    readonly createdAt: number;
-
-}
+@ObjectType()
+export class CreatePostingOutput extends CoreOutput {}
